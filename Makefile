@@ -20,6 +20,4 @@ string: string.c
 	gcc string.c -o string
 
 run:
-	gcc string.c -o string
-	clear
 	./string
