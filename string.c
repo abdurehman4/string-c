@@ -12,7 +12,7 @@ int countString(string_t string) {
   return num - 1;
 }
 
-string_t getLine() {
+void getLine(string_t *dest) {
   string_t string;
   char buffer[256];
   fgets(buffer, 256, stdin);
@@ -25,7 +25,7 @@ string_t getLine() {
   temp_str[len] = 0;
   string = malloc(sizeof(temp_str));
   strcpy(string, temp_str);
-  return string;
+  *dest = string;
 }
 
 string_t concat(string_t str1, string_t str2) {
@@ -45,10 +45,9 @@ void setCharAt(int position, string_t *string, char final_char) {
 }
 
 int main() {
-  string_t greeting = "Bello";
-  setCharAt(0, &greeting, 'H');
-  printf("Original : %s\n", greeting);
-
-  free(greeting);
+  printf("Who are you?\n");
+  string_t name;
+  getLine(&name);
+  printf("Welcome %s!\n", name);
   return 0;
 }
