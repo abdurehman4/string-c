@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -35,12 +36,17 @@ string_t concat(string_t str1, string_t str2) {
   return combined_str;
 }
 
-int main() {
-  string_t greeting = "Hello ";
-  string_t name;
+string_t setCharAt(int position, string_t *string, char final_char) {
+  string_t temp_str;
+  temp_str = (string_t)malloc(sizeof(*string));
+  strcpy(temp_str, *string);
+  temp_str[position] = final_char;
+  return temp_str;
+}
 
-  name = getLine();
-  printf("%s\n", concat(greeting, name));
-  free(name);
+int main() {
+  string_t greeting = "Bello";
+  greeting = setCharAt(0, &greeting, 'H');
+  printf("%s\n", greeting);
   return 0;
 }
